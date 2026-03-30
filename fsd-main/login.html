@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <h1>🏥 MediCare</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Welcome Back</h2>
+                <p class="auth-subtitle">Login to your MediCare account</p>
+
+                <div class="alert alert-error" id="loginError" style="display: none;"></div>
+
+                <form id="loginForm" class="form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address *</label>
+                        <input type="email" id="loginEmail" name="email" required placeholder="Enter your email">
+                        <span class="error-message" id="loginEmailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password *</label>
+                        <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+                        <span class="error-message" id="loginPasswordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userType">Login as:</label>
+                        <select id="userType" name="userType" required>
+                            <option value="patient">Patient</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-full">Login</button>
+                </form>
+
+                <p class="auth-link">Don't have an account? <a href="signup.html">Sign up here</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 MediCare. All rights reserved. | Your health is our priority</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

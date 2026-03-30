@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <h1>🏥 MediCare</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="doctors.html" class="nav-link">Book Appointment</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="dashboard-container">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <h1>📊 My Dashboard</h1>
+                <p>Manage your appointments and health records</p>
+            </div>
+
+            <!-- Dashboard Content Grid -->
+            <div class="dashboard-grid">
+                <!-- Left Sidebar - Profile & Quick Actions -->
+                <aside class="dashboard-sidebar">
+                    <!-- User Profile Card -->
+                    <div class="profile-card">
+                        <div class="profile-avatar">👤</div>
+                        <h3 id="userName"></h3>
+                        <p id="userEmail"></p>
+                        <button class="btn-primary" onclick="redirectToBookDoctor()">+ Book New Appointment</button>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="stats-card">
+                        <h3>📈 Your Stats</h3>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Appointments</span>
+                            <span class="stat-value" id="totalAppointments">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Upcoming</span>
+                            <span class="stat-value" id="upcomingAppointments">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Completed</span>
+                            <span class="stat-value" id="completedAppointments">0</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Content Area -->
+                <main class="dashboard-main">
+                    <!-- Upcoming Appointments Tab -->
+                    <div class="tabs-container">
+                        <div class="tabs">
+                            <button class="tab-button active" onclick="switchTab('upcoming')">📅 Upcoming Appointments</button>
+                            <button class="tab-button" onclick="switchTab('history')">📋 Appointment History</button>
+                        </div>
+
+                        <!-- Upcoming Appointments Content -->
+                        <div id="upcomingTab" class="tab-content active">
+                            <div id="upcomingAppointmentsContainer" class="appointments-container">
+                                <!-- Upcoming appointments will be loaded here -->
+                            </div>
+                            <div id="noUpcomingMessage" class="empty-state" style="display: none;">
+                                <h3>📭 No Upcoming Appointments</h3>
+                                <p>You don't have any scheduled appointments yet.</p>
+                                <button class="btn-primary" onclick="redirectToBookDoctor()">Book an Appointment</button>
+                            </div>
+                        </div>
+
+                        <!-- Appointment History Content -->
+                        <div id="historyTab" class="tab-content">
+                            <div id="appointmentHistoryContainer" class="appointments-container">
+                                <!-- Appointment history will be loaded here -->
+                            </div>
+                            <div id="noHistoryMessage" class="empty-state" style="display: none;">
+                                <h3>📚 No Appointment History</h3>
+                                <p>Your past appointments will appear here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cancel Appointment Modal -->
+    <div id="cancelModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCancelModal()">&times;</span>
+            <h2>Cancel Appointment</h2>
+            <p class="cancel-warning">⚠️ Are you sure you want to cancel this appointment?</p>
+            
+            <div class="cancel-details" id="cancelDetails"></div>
+            
+            <div class="form-group">
+                <label for="cancellationReason">Reason for Cancellation (Optional)</label>
+                <textarea id="cancellationReason" rows="4" placeholder="Tell us why you're canceling..."></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeCancelModal()">Keep Appointment</button>
+                <button class="btn-danger" onclick="confirmCancel()">Cancel Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reschedule Appointment Modal -->
+    <div id="rescheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRescheduleModal()">&times;</span>
+            <h2>Reschedule Appointment</h2>
+            
+            <div class="reschedule-details" id="rescheduleDetails"></div>
+
+            <form id="rescheduleForm" class="form booking-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Select New Date & Time</h3>
+                    
+                    <div class="form-group">
+                        <label for="newDate">📅 Select New Date</label>
+                        <select id="newDate" required>
+                            <option value="">-- Choose a date --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newTime">⏰ Select New Time</label>
+                        <select id="newTime" required>
+                            <option value="">-- Choose a time --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeRescheduleModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Confirm Reschedule</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 MediCare. All rights reserved. | Your health is our priority</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

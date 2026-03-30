@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <h1>🏥 MediCare</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="login.html" class="nav-link">Patient Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Admin Login Section -->
+    <section class="auth-section admin-auth-section">
+        <div class="auth-container">
+            <div class="auth-box admin-auth-box">
+                <div class="admin-badge">
+                    <span class="admin-icon">🔐</span>
+                    <span class="admin-label">Admin Portal</span>
+                </div>
+
+                <h2>Administrator Access</h2>
+                <p class="auth-subtitle">Secure login for system administrators</p>
+
+                <div class="alert alert-error" id="adminLoginError" style="display: none;"></div>
+
+                <form id="adminLoginForm" class="form">
+                    <div class="form-group">
+                        <label for="adminEmail">Admin Email *</label>
+                        <input type="email" id="adminEmail" name="email" required placeholder="admin@medicare.com">
+                        <span class="error-message" id="adminEmailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="adminPassword">Access Code *</label>
+                        <input type="password" id="adminPassword" name="password" required placeholder="Enter access code">
+                        <span class="error-message" id="adminPasswordError"></span>
+                    </div>
+
+                    <button type="submit" class="btn-primary btn-admin-login">
+                        <span class="btn-icon">🔓</span>
+                        Access Admin Panel
+                    </button>
+                </form>
+
+                <div class="admin-features-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">👨‍⚕️</span>
+                        <span>Manage Doctors</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📅</span>
+                        <span>Control Appointments</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <span>System Analytics</span>
+                    </div>
+                </div>
+
+                <p class="auth-link">Not an administrator? <a href="login.html">Patient Login</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 MediCare. All rights reserved. | Admin Portal - Authorized Access Only</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

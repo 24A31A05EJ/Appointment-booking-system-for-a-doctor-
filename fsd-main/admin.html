@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <h1>🏥 MediCare</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="admin.html" class="nav-link active">Admin Dashboard</a></li>
+                <li><a href="doctors.html" class="nav-link">Doctors</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Admin Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="dashboard-container">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <h1>🔧 Admin Dashboard</h1>
+                <p>Manage doctors, appointments, and system settings</p>
+            </div>
+
+            <!-- Admin Dashboard Content Grid -->
+            <div class="dashboard-grid">
+                <!-- Left Sidebar - Admin Actions -->
+                <aside class="dashboard-sidebar">
+                    <!-- Admin Profile Card -->
+                    <div class="profile-card">
+                        <div class="profile-avatar">👑</div>
+                        <h3 id="userName"></h3>
+                        <p id="userEmail"></p>
+                        <span class="admin-badge">Administrator</span>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="admin-actions-card">
+                        <h3>⚡ Quick Actions</h3>
+                        <button class="btn-admin-action" onclick="addNewDoctor()">
+                            <span class="action-icon">➕</span>
+                            Add Doctor
+                        </button>
+                        <button class="btn-admin-action" onclick="viewAllAppointments()">
+                            <span class="action-icon">📅</span>
+                            View Appointments
+                        </button>
+                        <button class="btn-admin-action" onclick="manageUsers()">
+                            <span class="action-icon">👥</span>
+                            Manage Users
+                        </button>
+                        <button class="btn-admin-action" onclick="systemSettings()">
+                            <span class="action-icon">⚙️</span>
+                            System Settings
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Main Content Area -->
+                <main class="dashboard-main">
+                    <!-- Admin Stats Overview -->
+                    <div class="admin-stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">👨‍⚕️</div>
+                            <div class="stat-info">
+                                <h3 id="totalDoctors">0</h3>
+                                <p>Total Doctors</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📅</div>
+                            <div class="stat-info">
+                                <h3 id="totalAppointments">0</h3>
+                                <p>Total Appointments</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-info">
+                                <h3 id="totalUsers">0</h3>
+                                <p>Registered Users</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-info">
+                                <h3 id="todayAppointments">0</h3>
+                                <p>Today's Appointments</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin Tabs -->
+                    <div class="tabs-container">
+                        <div class="tabs">
+                            <button class="tab-button active" onclick="switchAdminTab('doctors')">👨‍⚕️ Manage Doctors</button>
+                            <button class="tab-button" onclick="switchAdminTab('appointments')">📅 Appointments</button>
+                            <button class="tab-button" onclick="switchAdminTab('users')">👥 User Management</button>
+                            <button class="tab-button" onclick="switchAdminTab('reports')">📊 Reports</button>
+                        </div>
+
+                        <!-- Doctors Management Tab -->
+                        <div id="doctorsTab" class="tab-content active">
+                            <div class="admin-section-header">
+                                <h3>Doctor Management</h3>
+                                <button class="btn-primary" onclick="addNewDoctor()">+ Add New Doctor</button>
+                            </div>
+                            <div id="doctorsList" class="admin-list">
+                                <!-- Doctors will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Appointments Tab -->
+                        <div id="appointmentsTab" class="tab-content">
+                            <div class="admin-section-header">
+                                <h3>All Appointments</h3>
+                                <div class="filter-controls">
+                                    <select id="appointmentFilter" onchange="filterAppointments()">
+                                        <option value="all">All Appointments</option>
+                                        <option value="today">Today</option>
+                                        <option value="upcoming">Upcoming</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="appointmentsList" class="admin-list">
+                                <!-- Appointments will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Users Tab -->
+                        <div id="usersTab" class="tab-content">
+                            <div class="admin-section-header">
+                                <h3>User Management</h3>
+                            </div>
+                            <div id="usersList" class="admin-list">
+                                <!-- Users will be loaded here -->
+                            </div>
+                        </div>
+
+                        <!-- Reports Tab -->
+                        <div id="reportsTab" class="tab-content">
+                            <div class="admin-section-header">
+                                <h3>System Reports</h3>
+                            </div>
+                            <div class="reports-grid">
+                                <div class="report-card">
+                                    <h4>📊 Appointment Statistics</h4>
+                                    <div class="report-stats">
+                                        <div class="report-stat">
+                                            <span class="stat-label">This Week:</span>
+                                            <span class="stat-value" id="weeklyAppointments">0</span>
+                                        </div>
+                                        <div class="report-stat">
+                                            <span class="stat-label">This Month:</span>
+                                            <span class="stat-value" id="monthlyAppointments">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="report-card">
+                                    <h4>👨‍⚕️ Doctor Performance</h4>
+                                    <div class="report-stats">
+                                        <div class="report-stat">
+                                            <span class="stat-label">Most Booked:</span>
+                                            <span class="stat-value" id="mostBookedDoctor">-</span>
+                                        </div>
+                                        <div class="report-stat">
+                                            <span class="stat-label">Average Rating:</span>
+                                            <span class="stat-value" id="avgDoctorRating">0.0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add/Edit Doctor Modal -->
+    <div id="doctorModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close" onclick="closeDoctorModal()">&times;</span>
+            <h2 id="doctorModalTitle">Add New Doctor</h2>
+
+            <form id="doctorForm" class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="doctorName">Doctor Name *</label>
+                        <input type="text" id="doctorName" required placeholder="Dr. John Smith">
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorSpecialty">Specialty *</label>
+                        <input type="text" id="doctorSpecialty" required placeholder="Cardiologist">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="doctorEmail">Email</label>
+                        <input type="email" id="doctorEmail" placeholder="doctor@medicare.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorPhone">Phone</label>
+                        <input type="tel" id="doctorPhone" placeholder="+1-234-567-8900">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="doctorBio">Biography</label>
+                    <textarea id="doctorBio" rows="4" placeholder="Brief description of the doctor's experience and qualifications..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="doctorExperience">Years of Experience</label>
+                        <input type="number" id="doctorExperience" min="0" placeholder="10">
+                    </div>
+                    <div class="form-group">
+                        <label for="doctorRating">Rating (1-5)</label>
+                        <input type="number" id="doctorRating" min="1" max="5" step="0.1" placeholder="4.5">
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeDoctorModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Doctor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 MediCare. All rights reserved. | Admin Portal - Authorized Access Only</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

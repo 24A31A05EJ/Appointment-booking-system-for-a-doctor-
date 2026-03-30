@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Booking - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <h1>🏥 MediCare</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn-admin" onclick="redirectToAdminLogin()">Admin Login</button>
+                <button class="btn-login" onclick="redirectToLogin()">Login</button>
+                <button class="btn-signup" onclick="redirectToSignUp()">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Schedule Your Doctor Appointment</h1>
+            <p class="hero-subtitle">Book appointments with experienced doctors at your convenience</p>
+            <button class="btn-primary" onclick="redirectToSignUp()">Get Started</button>
+        </div>
+        <div class="hero-image">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='120' fill='%23E8F4F8'/%3E%3Ctext x='150' y='160' text-anchor='middle' font-size='80' fill='%234CAF50'%3E👨‍⚕️%3C/text%3E%3C/svg%3E" alt="Doctor">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <h2>Why Choose MediCare?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Easy Scheduling</h3>
+                <p>Book appointments quickly and easily with just a few clicks</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍⚕️</div>
+                <h3>Experienced Doctors</h3>
+                <p>Access to highly qualified and experienced healthcare professionals</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Flexible Hours</h3>
+                <p>Choose appointment times that work best for your schedule</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Private</h3>
+                <p>Your data is safe and secure with our privacy protection</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2>How MediCare Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Create Account</h3>
+                <p>Sign up for a free MediCare account in less than 2 minutes</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Find a Doctor</h3>
+                <p>Browse our network of qualified healthcare professionals</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Book Appointment</h3>
+                <p>Select your preferred date, time, and confirm your booking</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Get Reminders</h3>
+                <p>Receive automated reminders before your appointment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3 class="stat-number">50K+</h3>
+                <p>Happy Patients</p>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-number">200+</h3>
+                <p>Qualified Doctors</p>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-number">100K+</h3>
+                <p>Appointments Booked</p>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-number">24/7</h3>
+                <p>Support Available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section class="services">
+        <h2>Our Medical Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">❤️</div>
+                <h3>Cardiology</h3>
+                <p>Expert heart and cardiovascular care with state-of-the-art technology</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧠</div>
+                <h3>Neurology</h3>
+                <p>Comprehensive brain and nervous system healthcare services</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🦴</div>
+                <h3>Orthopedics</h3>
+                <p>Specialized treatment for bones, joints, and orthopedic conditions</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">👶</div>
+                <h3>Pediatrics</h3>
+                <p>Child-friendly medical care from experienced pediatricians</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🩹</div>
+                <h3>Dermatology</h3>
+                <p>Skin care and dermatological treatment from specialists</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏥</div>
+                <h3>General Medicine</h3>
+                <p>Trusted general practitioners for routine checkups and care</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Patients Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"MediCare made it so easy to book my appointment. The entire process was smooth and hassle-free. Highly recommended!"</p>
+                <div class="testimonial-author">
+                    <div class="avatar">👤</div>
+                    <div>
+                        <h4>John Smith</h4>
+                        <p>Verified Patient</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Great platform with experienced doctors. I got my appointment scheduled within minutes and the doctor was very professional."</p>
+                <div class="testimonial-author">
+                    <div class="avatar">👤</div>
+                    <div>
+                        <h4>Maria Garcia</h4>
+                        <p>Verified Patient</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"The customer support team was incredibly helpful. I had questions about the booking process and they answered everything quickly."</p>
+                <div class="testimonial-author">
+                    <div class="avatar">👤</div>
+                    <div>
+                        <h4>David Chen</h4>
+                        <p>Verified Patient</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Is it safe to share my medical information on MediCare?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, absolutely. We use industry-standard encryption and HIPAA-compliant security measures to protect all your medical information. Your privacy is our top priority.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Can I reschedule or cancel my appointment?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can reschedule or cancel appointments through your account dashboard up to 24 hours before the scheduled time. A notification will be sent to the doctor.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Do I need to create an account to book an appointment?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, creating an account is required. This ensures secure access to your medical records and appointment history. Registration is quick and free.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>What payment methods are accepted?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept all major credit cards, debit cards, digital wallets, and insurance payments. Payment is secure and processed through our encrypted payment gateway.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Is there a mobile app available?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, MediCare is available on both iOS and Android. Download the app from your respective app store for a better mobile experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Start Your Health Journey Today</h2>
+        <p>Book an appointment with a qualified doctor and take control of your health</p>
+        <div class="cta-buttons">
+            <button class="btn-primary" onclick="redirectToSignUp()">Sign Up Now</button>
+            <button class="btn-secondary" onclick="window.location.href='#contact'">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-preview" id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <div>
+                    <h4>Email</h4>
+                    <p>support@medicare.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <span>📞</span>
+                <div>
+                    <h4>Phone</h4>
+                    <p>+1-800-123-4567</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <span>🕒</span>
+                <div>
+                    <h4>Hours</h4>
+                    <p>24/7 Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get health tips and medical updates delivered to your inbox</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email address" required>
+            <button class="btn-primary">Subscribe</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MediCare</h4>
+                <p>Making healthcare accessible to everyone, everywhere.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="doctors.html">Find Doctors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MediCare. All rights reserved. | Your health is our priority</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

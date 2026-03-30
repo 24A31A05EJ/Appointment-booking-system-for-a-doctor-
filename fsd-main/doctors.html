@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Doctors - MediCare</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <h1>🏥 MediCare</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="doctors.html" class="nav-link active">Doctors</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <span class="user-greeting" id="userGreeting"></span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Doctors Section -->
+    <section class="doctors-section">
+        <div class="doctors-container">
+            <h1>Our Doctors</h1>
+            <p class="section-subtitle">Select a doctor and book your appointment today</p>
+
+            <!-- Search and Filter Bar -->
+            <div class="search-bar">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search by doctor name..."
+                    onkeyup="filterDoctors()"
+                >
+                <select id="specialtyFilter" class="specialty-filter" onchange="filterDoctors()">
+                    <option value="">-- All Specialties --</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Neurology">Neurology</option>
+                    <option value="Orthopedic Surgery">Orthopedic Surgery</option>
+                    <option value="Pediatrics">Pediatrics</option>
+                    <option value="General Practice">General Practice</option>
+                    <option value="Ophthalmology">Ophthalmology</option>
+                    <option value="Ear, Nose & Throat">Ear, Nose & Throat</option>
+                </select>
+            </div>
+
+            <!-- Doctors Grid -->
+            <div class="doctors-grid" id="doctorsGrid">
+                <!-- Doctors will be dynamically generated here -->
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No doctors found matching your search.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <div class="booking-header">
+                <h2>📋 Book Your Appointment</h2>
+                <p class="booking-subtitle">Fill in the details below to schedule your appointment</p>
+            </div>
+            
+            <div class="doctor-info" id="doctorInfo"></div>
+
+            <form id="bookingForm" class="form booking-form">
+                <div class="form-section">
+                    <h3 class="form-section-title">Select Doctor in This Specialty</h3>
+                    
+                    <div class="form-group">
+                        <label for="specialtyDoctorSelect">👨‍⚕️ Available Doctors</label>
+                        <select id="specialtyDoctorSelect" required onchange="updateSelectedDoctorInBooking()">
+                            <option value="">-- Choose a doctor --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="form-section-title">Select Appointment Time</h3>
+                    
+                    <div class="form-group">
+                        <label for="appointmentDate">📅 Select Date</label>
+                        <select id="appointmentDate" required>
+                            <option value="">-- Choose a date --</option>
+                        </select>
+                        <div id="slotsAvailableMessage" style="margin-top: 8px; font-size: 0.9em; color: #666;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appointmentTime">⏰ Select Time</label>
+                        <select id="appointmentTime" required>
+                            <option value="">-- Choose a time --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="form-section-title">Additional Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="appointmentReason">📝 Reason for Appointment (Optional)</label>
+                        <textarea id="appointmentReason" rows="4" placeholder="Describe your symptoms or reason for visit..." style="resize: vertical;"></textarea>
+                    </div>
+                </div>
+
+                <div class="appointment-summary" id="appointmentSummary" style="display: none;">
+                    <h3>📌 Appointment Summary</h3>
+                    <div class="summary-content">
+                        <p><strong>Doctor:</strong> <span id="summaryDoctor"></span></p>
+                        <p><strong>Date:</strong> <span id="summaryDate"></span></p>
+                        <p><strong>Time:</strong> <span id="summaryTime"></span></p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full btn-book">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 MediCare. All rights reserved. | Your health is our priority</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
